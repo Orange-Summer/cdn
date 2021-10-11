@@ -69,16 +69,16 @@ mashiro_global.ini = new function () {
       hearthstone_deck_iframe()
     })
   }
-  this.pjax = function () {
-    pjaxInit()
-    social_share()
-    mashiro_global.post_list_show_animation.ini()
-    copy_code_block()
-    if ($('div').hasClass('poem-wrap')) {
-      get_poem('#poem', '#info')
-    }
-    hearthstone_deck_iframe()
-  }
+  // this.pjax = function () {
+  //   pjaxInit()
+  //   social_share()
+  //   mashiro_global.post_list_show_animation.ini()
+  //   copy_code_block()
+  //   if ($('div').hasClass('poem-wrap')) {
+  //     get_poem('#poem', '#info')
+  //   }
+  //   hearthstone_deck_iframe()
+  // }
 }()
 mashiro_global.lib = new function () {
   this.removeClass = function (ele, className) {
@@ -156,9 +156,9 @@ function removeCookie (name) {
   document.cookie = name + mashiro_option.cookie_version_control + '=; Max-Age=-99999999;'
 }
 
-function jumpTo (url) {
-  return mashiro_global.lib.pjax_to_url(url, '#page')
-}
+// function jumpTo (url) {
+//   return mashiro_global.lib.pjax_to_url(url, '#page')
+// }
 
 function injectStyles (rule) {
   var div = $('<div />', {
@@ -660,46 +660,46 @@ function timeSeriesReload (flag) {
 }
 timeSeriesReload()
 
-var pjaxInit = function () {
-  add_upload_tips()
-  click_to_view_image()
-  original_emoji_click()
-  mashiro_global.font_control.ini()
-  $('p').remove('.head-copyright')
-  try {
-    code_highlight_style()
-  } catch (e) {};
-  try {
-    inlojv_js_getqqinfo()
-  } catch (e) {};
-  lazyload()
-  // if ($("div").hasClass("popcontainer")) {
-  //     loadBotui();
-  // }
-  try {
-    reload_show_date_time()
-  } catch (e) {}
-  if (mashiro_global.variables.skinSecter === true) {
-    $('.pattern-center').removeClass('pattern-center').addClass('pattern-center-sakura')
-    $('.headertop-bar').removeClass('headertop-bar').addClass('headertop-bar-sakura')
-    if (mashiro_global.variables.isNight) {
-      $('.blank').css('background-color', 'rgba(255,255,255,1)')
-      $('.toc').css('background-color', 'rgba(255,255,255,0.8)')
-    }
-  }
-  $('.iconflat').css('width', '50px').css('height', '50px')
-  $('.openNav').css('height', '50px')
-  $('#bg-next').click(function () {
-    nextBG()
-  })
-  $('#bg-pre').click(function () {
-    preBG()
-  })
-  smileBoxToggle()
-  timeSeriesReload()
-  add_copyright()
-  console.log($('#myscript').text())
-}
+// var pjaxInit = function () {
+//   add_upload_tips()
+//   click_to_view_image()
+//   original_emoji_click()
+//   mashiro_global.font_control.ini()
+//   $('p').remove('.head-copyright')
+//   try {
+//     code_highlight_style()
+//   } catch (e) {};
+//   try {
+//     inlojv_js_getqqinfo()
+//   } catch (e) {};
+//   lazyload()
+//   // if ($("div").hasClass("popcontainer")) {
+//   //     loadBotui();
+//   // }
+//   try {
+//     reload_show_date_time()
+//   } catch (e) {}
+//   if (mashiro_global.variables.skinSecter === true) {
+//     $('.pattern-center').removeClass('pattern-center').addClass('pattern-center-sakura')
+//     $('.headertop-bar').removeClass('headertop-bar').addClass('headertop-bar-sakura')
+//     if (mashiro_global.variables.isNight) {
+//       $('.blank').css('background-color', 'rgba(255,255,255,1)')
+//       $('.toc').css('background-color', 'rgba(255,255,255,0.8)')
+//     }
+//   }
+//   $('.iconflat').css('width', '50px').css('height', '50px')
+//   $('.openNav').css('height', '50px')
+//   $('#bg-next').click(function () {
+//     nextBG()
+//   })
+//   $('#bg-pre').click(function () {
+//     preBG()
+//   })
+//   smileBoxToggle()
+//   timeSeriesReload()
+//   add_copyright()
+//   console.log($('#myscript').text())
+// }
 $(document).on('click', '.sm', function () {
   var msg = '您真的要设为私密吗？'
   if (confirm(msg) == true) {
@@ -1535,62 +1535,62 @@ $(function () {
   Siren.IA()
   Siren.LV()
   if (window.is_app) injectStyles('#nprogress .bar { display: none; }')
-  if (Poi.pjax) {
-    $(document).pjax('a[target!=_top]', '#page', {
-      fragment: '#page',
-      timeout: 8000
-    }).on('pjax:send', function () {
-      $('#bar').css('width', '0%')
-      if (mashiro_option.NProgressON) NProgress.start()
-      Siren.MNH()
-    }).on('pjax:complete', function () {
-      Siren.AH()
-      Siren.PE()
-      Siren.CE()
-      Siren.VA()
-      Siren.MJ()
-      Siren.AB()
-      Siren.TOC()
-      Siren.BSZ()
-      if (mashiro_option.NProgressON) NProgress.done()
-      mashiro_global.ini.pjax()
-      $('#loading').fadeOut(500)
-      if (Poi.codelamp == 'open') {
-        self.Prism.highlightAll(event)
-      };
-      if ($('.ds-thread').length > 0) {
-        if (typeof DUOSHUO !== 'undefined') {
-          DUOSHUO.EmbedThread('.ds-thread')
-        } else {
-          $.getScript('//static.duoshuo.com/embed.js')
-        }
-      }
-    }).on('submit', '.search-form,.s-search', function (event) {
-      event.preventDefault()
-      $.pjax.submit(event, '#page', {
-        fragment: '#page',
-        timeout: 8000
-      })
-      if ($('.js-search.is-visible').length > 0) {
-        $('.js-toggle-search').toggleClass('is-active')
-        $('.js-search').toggleClass('is-visible')
-      }
-    })
-    mashiro_global.lib.pjax_to_url = function (url, ele) {
-      $.pjax({
-        url: url,
-        container: ele,
-        fragment: ele,
-        timeout: 8000
-      })
-    }
-    window.addEventListener('popstate', function (e) {
-      Siren.AH()
-      Siren.PE()
-      Siren.CE()
-      timeSeriesReload(true)
-    }, false)
-  }
+  // if (Poi.pjax) {
+  //   $(document).pjax('a[target!=_top]', '#page', {
+  //     fragment: '#page',
+  //     timeout: 8000
+  //   }).on('pjax:send', function () {
+  //     $('#bar').css('width', '0%')
+  //     if (mashiro_option.NProgressON) NProgress.start()
+  //     Siren.MNH()
+  //   }).on('pjax:complete', function () {
+  //     Siren.AH()
+  //     Siren.PE()
+  //     Siren.CE()
+  //     Siren.VA()
+  //     Siren.MJ()
+  //     Siren.AB()
+  //     Siren.TOC()
+  //     Siren.BSZ()
+  //     if (mashiro_option.NProgressON) NProgress.done()
+  //     mashiro_global.ini.pjax()
+  //     $('#loading').fadeOut(500)
+  //     if (Poi.codelamp == 'open') {
+  //       self.Prism.highlightAll(event)
+  //     };
+  //     if ($('.ds-thread').length > 0) {
+  //       if (typeof DUOSHUO !== 'undefined') {
+  //         DUOSHUO.EmbedThread('.ds-thread')
+  //       } else {
+  //         $.getScript('//static.duoshuo.com/embed.js')
+  //       }
+  //     }
+  //   }).on('submit', '.search-form,.s-search', function (event) {
+  //     event.preventDefault()
+  //     $.pjax.submit(event, '#page', {
+  //       fragment: '#page',
+  //       timeout: 8000
+  //     })
+  //     if ($('.js-search.is-visible').length > 0) {
+  //       $('.js-toggle-search').toggleClass('is-active')
+  //       $('.js-search').toggleClass('is-visible')
+  //     }
+  //   })
+  //   mashiro_global.lib.pjax_to_url = function (url, ele) {
+  //     $.pjax({
+  //       url: url,
+  //       container: ele,
+  //       fragment: ele,
+  //       timeout: 8000
+  //     })
+  //   }
+  //   window.addEventListener('popstate', function (e) {
+  //     Siren.AH()
+  //     Siren.PE()
+  //     Siren.CE()
+  //     timeSeriesReload(true)
+  //   }, false)
+  // }
   $.fn.postLike = function () {
     if ($(this).hasClass('done')) {
       return false
@@ -1615,7 +1615,7 @@ $(function () {
   })
   console.log('%c Mashiro %c', 'background:#24272A; color:#ffffff', '', 'https://2heng.xin/')
   console.log('%c hojun %c', 'background:#24272A; color:#ffffff', '', 'https://www.hojun.cn/')
-  console.log('%c OrangeSummer %c', 'background:#24272A; color:#ffffff', '', 'https://orangesummerr.com/')
+  console.log('%c OrangeSummer %c', 'background:#24272A; color:#ffffff', '', 'https://www.orangesummerr.com/')
   // console.log('%c Github %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
 })
 var isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1,
