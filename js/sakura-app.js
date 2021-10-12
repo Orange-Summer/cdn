@@ -1280,6 +1280,16 @@ var home = location.href,
           $('.js-toggle-search').toggleClass('is-active')
           $('.js-search').toggleClass('is-visible')
         })
+        //点击外侧关闭弹框
+        $('.ins-search-mask').on('click', function(e) {
+          if ($(e.target).closest('.js-toggle-search').length > 0) {
+          } else {
+            // 关闭弹框
+            if ($('.ins-search').hasClass('show')) {
+              $('.ins-search').toggleClass('show')
+            }
+          }
+        });
         $('.search_close').on('click', function () {
           if ($('.js-search').hasClass('is-visible')) {
             $('.js-toggle-search').toggleClass('is-active')
