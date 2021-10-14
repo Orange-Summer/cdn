@@ -834,6 +834,28 @@ table {
     border-collapse:collapse;
     border-spacing:0
 }
+.table-container table{
+    text-align: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 189, 189);
+}
+.table-container thead tr{
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(230, 189, 189);
+}
+.table-container td th{
+    padding: 5px 10px;
+    color: rgb(177, 106, 104);
+}
+.table-container tr:nth-child(even){
+    background: rgba(255, 109, 109, 0.4)
+}
+.table-container tr:nth-child(odd){
+    background: #FFF
+}
+
 td,th {
     padding:0
 }
@@ -861,28 +883,34 @@ dfn,cite,em,i {
     font-style:italic
 }
 blockquote {
-    margin:0;
-    padding:30px 60px;
-    position:relative
+    /*margin:0;*/
+    /*padding:30px 60px;*/
+    /*position:relative*/
+    font: 14px/22px normal helvetica, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    padding-left: 15px;
+    border-left: 5px solid #ff6d6d;
 }
-blockquote:before {
-    content:"\f10d" !important;
-    font-size:3rem;
-    position:absolute;
-    top:-25px;
-    left:12px;
-    color:orange;
-    font-family:FontAwesome
-}
-blockquote:after {
-    content:'\f10e' !important;
-    font-size:3rem;
-    position:absolute;
-    bottom:-25px;
-    right:-5px;
-    color:orange;
-    font-family:FontAwesome
-}
+/*blockquote:before {*/
+/*    content:"\f10d" !important;*/
+/*    font-size:3rem;*/
+/*    position:absolute;*/
+/*    top:-25px;*/
+/*    left:12px;*/
+/*    color:orange;*/
+/*    font-family:FontAwesome*/
+/*}*/
+/*blockquote:after {*/
+/*    content:'\f10e' !important;*/
+/*    font-size:3rem;*/
+/*    position:absolute;*/
+/*    bottom:-25px;*/
+/*    right:-5px;*/
+/*    color:orange;*/
+/*    font-family:FontAwesome*/
+/*}*/
 blockquote p {
     margin:5px 0
 }
