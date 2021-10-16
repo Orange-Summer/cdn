@@ -94,6 +94,7 @@ i {
         right: auto
     }
     .juzhong {
+        display: inline-block;
         line-height: 350px;
     }
 }
@@ -246,6 +247,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
         padding-top: 75px;
     }
     .juzhong {
+        display: inline-block;
         line-height: 75px;
     }
 }
